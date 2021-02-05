@@ -101,11 +101,13 @@ footer {
 
 form{
   margin-left: 2vw;
+  
 }
 input[type=name]{
   display:flex;
   margin: 5px;
   flex-direction: column;
+  width: 40vw;
 
 }
 input[type=set]{
@@ -124,5 +126,11 @@ input[type=email]{
   display:flex;
   margin: 2px;
   flex-direction: column;
+
+}
+
+div.Static{
+  display:flex;
+  flex-wrap: wrap;
 
 }
