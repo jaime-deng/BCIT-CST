@@ -98,3 +98,31 @@ footer {
   height: 10vmin;
   padding-top: 2vmin;
 }
+
+form{
+  margin-left: 2vw;
+}
+input[type=name]{
+  display:flex;
+  margin: 5px;
+  flex-direction: column;
+
+}
+input[type=set]{
+  display:flex;
+  margin: 2px;
+  flex-direction: column;
+
+}
+input[type=student]{
+  display:flex;
+  margin: 2px;
+  flex-direction: column;
+
+}
+input[type=email]{
+  display:flex;
+  margin: 2px;
+  flex-direction: column;
+
+}
