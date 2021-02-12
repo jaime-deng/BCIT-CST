@@ -98,3 +98,54 @@ footer {
   height: 10vmin;
   padding-top: 2vmin;
 }
+
+form{
+  margin: 2vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+
+  
+}
+label{
+  display:flex;
+  width: 15vw;
+  margin-left: 7px;
+  margin-bottom: 20px;
+}
+input[type=name]{
+  display:flex;
+  flex-direction: column;
+  width: 28vw;
+  margin-bottom: 20px;
+
+}
+input[type=set]{
+  display:flex;
+  width: 28vw;
+  margin-bottom: 20px;
+  flex-direction: column;
+
+}
+input[type=student]{
+  display:flex;
+  width: 28vw;
+  margin-bottom: 20px;
+  flex-direction: column;
+
+}
+input[type=email]{
+  display:flex;
+  width: 28vw;
+  margin-bottom: 20px;
+  flex-direction: column;
+
+}
+
+select{
+  display:flex;
+  flex-direction: column;
+  width: 28vw;
+  margin-bottom: 20px;
+}
