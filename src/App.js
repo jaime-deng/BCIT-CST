@@ -6,7 +6,7 @@ import './App.css';
 import FormSelect from "./components/form";
 import Options from "./components/option";
 
-const courseList = ["Web & Mobile","AI & Machine", "Programming Paradigms","Technical Programming","Cloud Computing (DTC)","Predictive Analytics (DTC)", "defer"]
+const courseList = ["Web & Mobile","AI & Machine", "Programming Paradigms","Technical Programming","Cloud Computing (DTC)","Predictive Analytics (DTC)"]
 
 function App() {
   
@@ -88,13 +88,13 @@ function App() {
 <div className="options">
       
       <form>
-      <Options number="First choice" id="one" courseList={course} courseListarry={courseList} />
-      <Options number="Second choice" id="two"/>
-      <Options number="Third choice" id="three"/>
-      <Options number="Fourth choice" id="four"/>
-      <Options number="Fifth choice" id="five"/>
-      <Options number="Sixth choice" id="six"/>
-      <label htmlFor="set"> First choice:</label>
+      <Options number="First choice" choicesid="one" change={selectChanged} unSelectedCourseList={unSelectedCourseList}/>
+      <Options number="Second choice" choicesid="two" change={selectChanged} unSelectedCourseList={unSelectedCourseList}/>
+      <Options number="Third choice" choicesid="three" change={selectChanged} unSelectedCourseList={unSelectedCourseList}/>
+      <Options number="Fourth choice" choicesid="four" change={selectChanged} unSelectedCourseList={unSelectedCourseList}/>
+      <Options number="Fifth choice" choicesid="five" change={selectChanged} unSelectedCourseList={unSelectedCourseList}/>
+      <Options number="Sixth choice" choicesid="six" change={selectChanged} unSelectedCourseList={unSelectedCourseList}/>
+      {/* <label htmlFor="set"> First choice:</label>
       <select onChange={selectChanged} name="one" id="one">
         <option value="select">Please Select</option>
         {unSelectedCourseList("one").map((course) => (
@@ -104,27 +104,7 @@ function App() {
         ))}
         <option value="Defer">Defer</option>
       </select>
-      <label htmlFor="set"> Second choice:</label>
-      <select onChange={selectChanged} name="one" id="two">
-        <option value="select">Please Select</option>
-        {unSelectedCourseList("two").map((course) => (
-          <option key={course} value={course}>
-            {course}
-          </option>
-        ))}
-        <option value="Defer">Defer</option>
-      </select>
-      <label htmlFor="set"> Third choice:</label>
-      <select onChange={selectChanged} name="one" id="three">
-        <option value="select">Please Select</option>
-        {unSelectedCourseList("three").map((course) => (
-          <option key={course} value={course}>
-            {course}
-          </option>
-        ))}
-        <option value="Defer">Defer</option>
-      </select>
-      
+       */}
     
       
 

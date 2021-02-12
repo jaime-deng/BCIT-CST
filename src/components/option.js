@@ -1,27 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 
-const courseList = ["Web & Mobile","AI & Machine", "Programming Paradigms","Technical Programming","Cloud Computing (DTC)","Predictive Analytics (DTC)"]
-const Options = (choices) => {
-  const [course, setCourse] = useState([]);
-  function selectChanged(event) {
-    const targetId = event.target.id;
-    const selection = event.target.value;
-    setCourse([...course, { selection, list: targetId }]);
-  }
-  function unSelectedCourseList(list) {
-    return courseList.filter((select) => {
-        return !course.find((selectOption) => {
-              return selectOption.course === select && selectOption.list !== list;
-              });
-      
-    });
-  }
+
+const Options = ({number, unSelectedCourseList,choicesid,change}) => {
+
   return (
     <div >
-     <label htmlFor="set"> {choices.number}</label>
-      <select onChange={selectChanged} name={choices.id} id={choices.id}>
+     <label htmlFor="set"> {number}</label>
+      <select onChange={change} name={choicesid} id={choicesid}>
         <option value="select">Please Select</option>
-        {unSelectedCourseList(`${choices.id}`).map((course) => (
+        {unSelectedCourseList(`${choicesid}`).map((course) => (
           <option key={course} value={course}>
             {course}
           </option>
