@@ -100,37 +100,52 @@ footer {
 }
 
 form{
-  margin-left: 2vw;
+  margin: 2vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+
   
+}
+label{
+  display:flex;
+  width: 15vw;
+  margin-left: 7px;
+  margin-bottom: 20px;
 }
 input[type=name]{
   display:flex;
-  margin: 5px;
   flex-direction: column;
-  width: 40vw;
+  width: 28vw;
+  margin-bottom: 20px;
 
 }
 input[type=set]{
   display:flex;
-  margin: 2px;
+  width: 28vw;
+  margin-bottom: 20px;
   flex-direction: column;
 
 }
 input[type=student]{
   display:flex;
-  margin: 2px;
+  width: 28vw;
+  margin-bottom: 20px;
   flex-direction: column;
 
 }
 input[type=email]{
   display:flex;
-  margin: 2px;
+  width: 28vw;
+  margin-bottom: 20px;
   flex-direction: column;
 
 }
 
-div.Static{
+select{
   display:flex;
-  flex-wrap: wrap;
-
+  flex-direction: column;
+  width: 28vw;
+  margin-bottom: 20px;
 }
