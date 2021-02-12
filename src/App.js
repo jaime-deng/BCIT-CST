@@ -1,30 +1,31 @@
 import logo from './BCIT_LOGO.png';
 import keyboard_logo from "./keyboard.jpeg";
-import {useEffect} from "react";
+import {useState} from "react";
 import './App.css';
-import Select from './Select';
+//import Select from './Select';
+//import Options from "./components/option";
 
-const course_list = ["Web & Mobile","AI & Machine", "Programming Paradigms","Technical Programming","Cloud Computing (DTC)","Predictive Analytics (DTC)", "defer"]
-const course_list2 = ["AI & Machine", "Programming Paradigms","Technical Programming","Cloud Computing (DTC)","Predictive Analytics (DTC)", "defer"]
+const courseList = ["Web & Mobile","AI & Machine", "Programming Paradigms","Technical Programming","Cloud Computing (DTC)","Predictive Analytics (DTC)", "defer"]
+//const course_list2 = ["AI & Machine", "Programming Paradigms","Technical Programming","Cloud Computing (DTC)","Predictive Analytics (DTC)", "defer"]
 function App() {
   //const[course, CourseDrop] = Select("Second Choice", "",course_list )
 
-  // let course2 = []
-  // for(let ab = 0; ab < course_list.length; ab++) {
-  //   if(Select[1] == course_list) {
-
-  //   }
-  // }
-  const [state, setState] = useState(initialState);
-  // should there be 6 other state ? one for each options?
-  useEffect(() => {
-    document.body.addEventListener("click", ev => {
-      //call a function that target the click (assume for the first choice)
-
+  const [course, setCourse] = useState([]);
+  function selectChanged(event) {
+    const targetId = event.target.id;
+    const selection = event.target.value;
+    setCourse([...course, { selection, list: targetId }]);
+  }
+  function unSelectedCourseList(list) {
+    return courseList.filter((select) => {
+        return !course.find((selectOption) => {
+              return selectOption.selection === select && selectOption.list !== list;
+              });
+        
       
-    })
-  }, [])
-  // 
+    });
+  }
+  
   
   //this callback function
   //will change state of a option e.g. web & mobile to true
@@ -43,7 +44,7 @@ function Second(choice) {
   //possibly another function to update what options are being made false. to continue with a reduce list
 
   // another function to make the next choices show only defer when defer is first selected. e.g. 2nd choice is defer then 3-6th pick are also defer now.
-  
+  let FirstChoice = "First Choice";
 
   return (
     <div className="App">
@@ -131,9 +132,8 @@ function Second(choice) {
       </div>
       
       
-      <form>
         
-    <label htmlFor="set"> First Choice:</label>
+    {/* <label htmlFor="set"> First Choice:</label>
        <select name="one" id="one">
          <option value="select">Please Select</option>
         <option value="Web & Mobile" >Web & Mobile</option>
@@ -144,73 +144,83 @@ function Second(choice) {
         <option value="Predictive Analytics (DTC)">Predictive Analytics (DTC)</option>
         <option value="Defer">Defer</option>
        
-      </select>
-      {/* <label htmlFor="set"> Second Choice:</label> 
-       <select name="one" id="two">
-         <option value="select">Please Select</option>
-        <option value="Web & Mobile" >Web & Mobile</option>
-        <option value="AI & Machine">AI & Machine</option>
-        <option value="Programming Paradigms">Programming Paradigms</option>
-        <option value="Technical Programming">Technical Programming</option>
-        <option value="Cloud Computing (DTC)">Cloud Computing (DTC)</option>
-        <option value="Predictive Analytics (DTC)">Predictive Analytics (DTC)</option>
+      </select> */}
+
+<div className="options">
+      {/* //{course.map((pick) => (
+      //   <p>{pick.course}</p>
+      // ))} */}
+      <form>
+      
+      <label htmlFor="set"> First choice:</label>
+      <select onChange={selectChanged} name="one" id="one">
+        <option value="select">Please Select</option>
+        {unSelectedCourseList("one").map((course) => (
+          <option key={course} value={course}>
+            {course}
+          </option>
+        ))}
         <option value="Defer">Defer</option>
-       
       </select>
-      <label htmlFor="set"> Third Choice:</label>
-       <select name="one" id="three">
-         <option value="select">Please Select</option>
-        <option value="Web & Mobile" >Web & Mobile</option>
-        <option value="AI & Machine">AI & Machine</option>
-        <option value="Programming Paradigms">Programming Paradigms</option>
-        <option value="Technical Programming">Technical Programming</option>
-        <option value="Cloud Computing (DTC)">Cloud Computing (DTC)</option>
-        <option value="Predictive Analytics (DTC)">Predictive Analytics (DTC)</option>
+      <label htmlFor="set"> Second choice:</label>
+      <select onChange={selectChanged} name="one" id="two">
+        <option value="select">Please Select</option>
+        {unSelectedCourseList("two").map((course) => (
+          <option key={course} value={course}>
+            {course}
+          </option>
+        ))}
         <option value="Defer">Defer</option>
-       
       </select>
-      <label htmlFor="set"> Fourth Choice:</label>
-       <select name="one" id="four">
-         <option value="select">Please Select</option>
-        <option value="Web & Mobile" >Web & Mobile</option>
-        <option value="AI & Machine">AI & Machine</option>
-        <option value="Programming Paradigms">Programming Paradigms</option>
-        <option value="Technical Programming">Technical Programming</option>
-        <option value="Cloud Computing (DTC)">Cloud Computing (DTC)</option>
-        <option value="Predictive Analytics (DTC)">Predictive Analytics (DTC)</option>
+      <label htmlFor="set"> Third choice:</label>
+      <select onChange={selectChanged} name="one" id="three">
+        <option value="select">Please Select</option>
+        {unSelectedCourseList("three").map((course) => (
+          <option key={course} value={course}>
+            {course}
+          </option>
+        ))}
         <option value="Defer">Defer</option>
-       
       </select>
-      <label htmlFor="set"> Fifth Choice:</label>
-       <select name="one" id="five">
-         <option value="select">Please Select</option>
-        <option value="Web & Mobile" >Web & Mobile</option>
-        <option value="AI & Machine">AI & Machine</option>
-        <option value="Programming Paradigms">Programming Paradigms</option>
-        <option value="Technical Programming">Technical Programming</option>
-        <option value="Cloud Computing (DTC)">Cloud Computing (DTC)</option>
-        <option value="Predictive Analytics (DTC)">Predictive Analytics (DTC)</option>
+      <label htmlFor="set"> Fourth choice:</label>
+      <select onChange={selectChanged} name="one" id="four">
+        <option value="select">Please Select</option>
+        {unSelectedCourseList("four").map((course) => (
+          <option key={course} value={course}>
+            {course}
+          </option>
+        ))}
         <option value="Defer">Defer</option>
-       
       </select>
-      <label htmlFor="set"> Sixth Choice:</label>
-       <select name="one" id="six">
-         <option value="select">Please Select</option>
-        <option value="Web & Mobile" >Web & Mobile</option>
-        <option value="AI & Machine">AI & Machine</option>
-        <option value="Programming Paradigms">Programming Paradigms</option>
-        <option value="Technical Programming">Technical Programming</option>
-        <option value="Cloud Computing (DTC)">Cloud Computing (DTC)</option>
-        <option value="Predictive Analytics (DTC)">Predictive Analytics (DTC)</option>
+      <label htmlFor="set"> Fifth choice:</label>
+      <select onChange={selectChanged} name="one" id="five">
+        <option value="select">Please Select</option>
+        {unSelectedCourseList("five").map((course) => (
+          <option key={course} value={course}>
+            {course}
+          </option>
+        ))}
         <option value="Defer">Defer</option>
-       
       </select>
-      {/* <CourseDrop /> */}
+      
+      <label htmlFor="set"> Sixth choice:</label>
+      <select onChange={selectChanged} name="one" id="six">
+        <option value="select">Please Select</option>
+        {unSelectedCourseList("six").map((course) => (
+          <option key={course} value={course}>
+            {course}
+          </option>
+        ))}
+        <option value="Defer">Defer</option>
+      </select>
+    
+      {/* <Options choices="First Choice" /> */}
 
       
     </form>
-    
-    
+      </div>
+      {/* ))}; */}
+      
 
       <hr />
 
