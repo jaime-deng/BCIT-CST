@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const courseList = ["Web & Mobile","AI & Machine", "Programming Paradigms","Technical Programming","Cloud Computing (DTC)","Predictive Analytics (DTC)", "defer"]
+const courseList = ["Web & Mobile","AI & Machine", "Programming Paradigms","Technical Programming","Cloud Computing (DTC)","Predictive Analytics (DTC)"]
 const Options = (choices) => {
   const [course, setCourse] = useState([]);
   function selectChanged(event) {
@@ -17,14 +17,11 @@ const Options = (choices) => {
     });
   }
   return (
-    <div className="options">
-      {course.map((pick) => (
-        <p>{pick.course}</p>
-      ))}
-      <label htmlFor="set"> {choices}:</label>
-      <select onChange={selectChanged} name="one" id="one">
+    <div >
+     <label htmlFor="set"> {choices.number}</label>
+      <select onChange={selectChanged} name={choices.id} id={choices.id}>
         <option value="select">Please Select</option>
-        {unSelectedCourseList("one").map((course) => (
+        {unSelectedCourseList(`${choices.id}`).map((course) => (
           <option key={course} value={course}>
             {course}
           </option>
