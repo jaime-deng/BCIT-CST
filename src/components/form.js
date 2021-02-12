@@ -25,7 +25,7 @@ const FormSelect = () => {
         <input type="email" id="email"
        pattern=".+@my.bcit.ca | .+@bcit.ca" size="100" placeholder="JohnDoe@my.bcit.ca" required></input>
 
-<label htmlFor="set"> SET A,B,C,D,E,F,X,O:</label>
+<label htmlFor="set"> SET A,B,C,D,E,F,Co-op,Other:</label>
        <select name="set" id="set">
         <option value="A">A</option>
         <option value="B">B</option>
@@ -33,8 +33,8 @@ const FormSelect = () => {
         <option value="D">D</option>
         <option value="E">E</option>
         <option value="F">F</option>
-        <option value="X">X</option>
-        <option value="O">O</option>
+        <option value="X">Co-op</option>
+        <option value="Other">Other</option>
       </select>
         </div>
     )

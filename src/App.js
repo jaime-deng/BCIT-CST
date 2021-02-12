@@ -29,8 +29,6 @@ function App() {
   
   
 
-  
-
   // another function to make the next choices show only defer when defer is first selected. e.g. 2nd choice is defer then 3-6th pick are also defer now.
   
 
@@ -133,7 +131,7 @@ function App() {
       
     </form>
       </div>
-      {/* ))}; */}
+     
       
 
       <hr />
