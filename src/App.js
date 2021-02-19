@@ -41,28 +41,10 @@ function App() {
     });
   }
   
-//   function unSelectedCourseList(list) {
-    
-//     return courseList.filter((select) => {
-//       console.log(select)
-//       if(select == "Defer") {
-//         return !course.find((selectOption) => {
-          
-//           //console.log(selectOption.selection)
-//               return selectOption.selection === select && selectOption.list !== list;
-              
-//               });
-//       }
-      
-//             return course.find((selectOption) => {
-//               console.log(selectOption)
-//               console.log(selectOption.selection)
-//                   return selectOption.selection === select && selectOption.list !== list;
-                  
-//                   });
-//   });
-  
-// }
+function deferral() {
+
+
+}
   
  
   return (
@@ -78,9 +60,7 @@ function App() {
       <Titles text={"Section 1: Student Information"} />
 
 
-      <div className="Divider1">
-        <h2 className="Divider1Text">Section 1: Student Information</h2>
-      </div>
+      
 
     <form>
       <FormSelect />
