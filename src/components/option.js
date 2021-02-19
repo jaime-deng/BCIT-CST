@@ -13,7 +13,7 @@ const Options = ({number, unSelectedCourseList,choicesid,change}) => {
             {course}
           </option>
         ))}
-        <option value="Defer">Defer</option>
+        
       </select>
     </div>
   );

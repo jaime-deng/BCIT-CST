@@ -6,32 +6,56 @@ import './App.css';
 import FormSelect from "./components/form";
 import Options from "./components/option";
 
-const courseList = ["Web & Mobile","AI & Machine", "Programming Paradigms","Technical Programming","Cloud Computing (DTC)","Predictive Analytics (DTC)"]
-
+const courseList = ["Web & Mobile","AI & Machine", "Programming Paradigms","Technical Programming","Cloud Computing (DTC)","Predictive Analytics (DTC)", "Defer"]
+const noCourse = ["Defer"];
 function App() {
   
-
+// state of the array of course list
   const [course, setCourse] = useState([]);
+  //when change occur will target the select and update the setCourse
   function selectChanged(event) {
     const targetId = event.target.id;
     const selection = event.target.value;
     setCourse([...course, { selection, list: targetId }]);
   }
+
+
+
+  //unselect
   function unSelectedCourseList(list) {
+    
     return courseList.filter((select) => {
+      
         return !course.find((selectOption) => {
               return selectOption.selection === select && selectOption.list !== list;
               });
-        
-      
     });
   }
   
+//   function unSelectedCourseList(list) {
+    
+//     return courseList.filter((select) => {
+//       console.log(select)
+//       if(select == "Defer") {
+//         return !course.find((selectOption) => {
+          
+//           //console.log(selectOption.selection)
+//               return selectOption.selection === select && selectOption.list !== list;
+              
+//               });
+//       }
+      
+//             return course.find((selectOption) => {
+//               console.log(selectOption)
+//               console.log(selectOption.selection)
+//                   return selectOption.selection === select && selectOption.list !== list;
+                  
+//                   });
+//   });
   
-
-  // another function to make the next choices show only defer when defer is first selected. e.g. 2nd choice is defer then 3-6th pick are also defer now.
+// }
   
-
+ 
   return (
     <div className="App">
       <header className="App-header">
@@ -94,26 +118,10 @@ function App() {
       <Options number="Fourth choice" choicesid="four" change={selectChanged} unSelectedCourseList={unSelectedCourseList}/>
       <Options number="Fifth choice" choicesid="five" change={selectChanged} unSelectedCourseList={unSelectedCourseList}/>
       <Options number="Sixth choice" choicesid="six" change={selectChanged} unSelectedCourseList={unSelectedCourseList}/>
-      {/* <label htmlFor="set"> First choice:</label>
-      <select onChange={selectChanged} name="one" id="one">
-        <option value="select">Please Select</option>
-        {unSelectedCourseList("one").map((course) => (
-          <option key={course} value={course}>
-            {course}
-          </option>
-        ))}
-        <option value="Defer">Defer</option>
-      </select>
-       */}
-    
-      
-
       
     </form>
       </div>
      
-      
-
       <hr />
 
       <div className="Buttons">
