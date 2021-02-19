@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import './App.css';
+
 
 //COMPONENTS
 import Header from "./components/Header.js"
@@ -9,6 +11,8 @@ import Content from "./components/Content.js"
 import Titles from "./components/Titles.js"
 import Buttons from "./components/Buttons.js"
 import Footer from "./components/Footer.js"
+
+import Home from "./components/Home.js"
 
 
 //import Select from './Select';
@@ -48,6 +52,7 @@ function deferral() {
   
  
   return (
+    <Router>
     <div className="App">
       <Header />
 
@@ -60,17 +65,12 @@ function deferral() {
       <Titles text={"Section 1: Student Information"} />
 
 
-      
 
     <form>
       <FormSelect />
-
-
       </form>
 
-      <div className="Divider1">
-        <h2 className="Divider1Text">Section 2: Option Selection</h2>
-      </div>
+      <Titles text={"Section 2: Option Selection"} />
     
 
 <div className="options">
@@ -88,11 +88,16 @@ function deferral() {
      
       <hr />
 
-      <Buttons />
+        <Buttons />
+        
+
+
 
       <Footer />
 
     </div>
+    
+    </Router>
   );
 }
 

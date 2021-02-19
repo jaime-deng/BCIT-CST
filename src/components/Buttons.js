@@ -1,6 +1,10 @@
 import React from "react";
+import Home from "./Home"
 
 function Buttons() {
+    
+
+    
     return (
         <div className="Buttons">
             <button className="Button1">PREVIOUS</button>
@@ -10,5 +14,6 @@ function Buttons() {
     )
 
 }
+
 
 export default Buttons
