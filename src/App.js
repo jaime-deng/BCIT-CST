@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import './App.css';
+import { useHistory } from 'react-router-dom';
 
 //COMPONENTS
 import Header from "./components/Header.js"
@@ -10,6 +12,8 @@ import Titles from "./components/Titles.js"
 import Buttons from "./components/Buttons.js"
 import Footer from "./components/Footer.js"
 
+import Home from "./components/Home.js"
+
 
 //import Select from './Select';
 //import Options from "./components/option";
@@ -18,6 +22,7 @@ const courseList = ["Web & Mobile", "AI & Machine", "Programming Paradigms", "Te
 //const course_list2 = ["AI & Machine", "Programming Paradigms","Technical Programming","Cloud Computing (DTC)","Predictive Analytics (DTC)", "defer"]
 function App() {
   //const[course, CourseDrop] = Select("Second Choice", "",course_list )
+
 
   const [course, setCourse] = useState([]);
   function selectChanged(event) {
@@ -56,6 +61,7 @@ function App() {
   let FirstChoice = "First Choice";
 
   return (
+    <Router>
     <div className="App">
       <Header />
 
@@ -198,16 +204,21 @@ function App() {
 
         </form>
       </div>
-      {/* ))}; */}
+
 
 
       <hr />
 
-      <Buttons />
+        <Buttons />
+        
+
+
 
       <Footer />
 
     </div>
+    {/* <Route path="/" exact component={Home} /> */}
+    </Router>
   );
 }
 
