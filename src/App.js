@@ -16,8 +16,8 @@ import Home from "./components/Home.js"
 
 
 //import Select from './Select';
-import FormSelect from "./components/form";
-import Options from "./components/option";
+import FormSelect from "./components/Form";
+import Options from "./components/Option";
 
 const courseList = ["Web & Mobile","AI & Machine", "Programming Paradigms","Technical Programming","Cloud Computing (DTC)","Predictive Analytics (DTC)", "Defer"]
 const noCourse = ["Defer"];
@@ -30,25 +30,32 @@ function App() {
     const targetId = event.target.id;
     const selection = event.target.value;
     setCourse([...course, { selection, list: targetId }]);
+    
+  }
+//possible to improve by using useEffect
+  function containsDefer() {
+    return !!course.find(c => c.selection == "Defer")
+    
   }
 
-
-
+  function Deferral() {
+    return course.includes("Defer")
+    
+  }
+console.log(!!course.find(c => c.selection == "Defer"))
   //unselect
   function unSelectedCourseList(list) {
-    
+    console.log(course)
     return courseList.filter((select) => {
       
         return !course.find((selectOption) => {
               return selectOption.selection === select && selectOption.list !== list;
               });
     });
+    
   }
   
-function deferral() {
 
-
-}
   
  
   return (
@@ -76,12 +83,17 @@ function deferral() {
 <div className="options">
       
       <form>
-      <Options number="First choice" choicesid="one" change={selectChanged} unSelectedCourseList={unSelectedCourseList}/>
-      <Options number="Second choice" choicesid="two" change={selectChanged} unSelectedCourseList={unSelectedCourseList}/>
-      <Options number="Third choice" choicesid="three" change={selectChanged} unSelectedCourseList={unSelectedCourseList}/>
-      <Options number="Fourth choice" choicesid="four" change={selectChanged} unSelectedCourseList={unSelectedCourseList}/>
-      <Options number="Fifth choice" choicesid="five" change={selectChanged} unSelectedCourseList={unSelectedCourseList}/>
-      <Options number="Sixth choice" choicesid="six" change={selectChanged} unSelectedCourseList={unSelectedCourseList}/>
+      <Options number="First choice" choicesid="one" change={selectChanged} unSelectedCourseList={unSelectedCourseList}
+      />
+      <Options number="Second choice" choicesid="two" change={selectChanged} unSelectedCourseList={unSelectedCourseList}
+      disabled={containsDefer()}/>
+      <Options number="Third choice" choicesid="three" change={selectChanged} unSelectedCourseList={unSelectedCourseList} disabled={containsDefer()} />
+      <Options number="Fourth choice" choicesid="four" change={selectChanged} unSelectedCourseList={unSelectedCourseList}
+      disabled={containsDefer()}/>
+      <Options number="Fifth choice" choicesid="five" change={selectChanged} unSelectedCourseList={unSelectedCourseList}
+      disabled={containsDefer()}/>
+      <Options number="Sixth choice" choicesid="six" change={selectChanged} unSelectedCourseList={unSelectedCourseList}
+      disabled={containsDefer()}/>
       
     </form>
       </div>

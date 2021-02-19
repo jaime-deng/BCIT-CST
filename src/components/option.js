@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const Options = ({number, unSelectedCourseList,choicesid,change}) => {
+const Options = ({number, unSelectedCourseList, disabled,choicesid,change}) => {
 
   return (
     <div >
@@ -14,7 +14,7 @@ const Options = ({number, unSelectedCourseList,choicesid,change}) => {
           </option>
           
         ))}
-        <option key="Defer" value="Defer">Defer</option>
+        
       </select>
     </div>
   );
