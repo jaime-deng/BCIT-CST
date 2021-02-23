@@ -1,41 +1,76 @@
 import React from 'react'
 
-const FormSelect = () => {
+const FormSelect = ({ studentInfo, handleInfoChange }) => {
     return (
         <div>
             <label htmlFor="name">Enter Your Legal First Name:</label>
-        <input type="name" id="legal"
-       pattern="[A-Z][a-z]" size="120" placeholder="Legal First Name" required></input>
+            <input type="text"
+                id="firstname"
+                value={studentInfo.firstname}
+                //pattern="[A-Z][a-z]"
+                //maxLength="120"
+                placeholder="Legal First Name"
+                onChange={handleInfoChange}
+                required></input>
 
-<label htmlFor="name">Enter Your Prefer Name:</label>
-        <input type="name" id="prefer"
-       pattern="[A-Z][a-z]" size="120" placeholder="Prefer Name" required></input>
+            <label htmlFor="name">Enter Your Prefer Name:</label>
+            <input
+                type="text"
+                id="prefername"
+                value={studentInfo.prefername}
+                //pattern="[A-Z][a-z]" size="120"
+                placeholder="Prefer Name"
+                onChange={handleInfoChange}
+                required></input>
 
+            <label htmlFor="name">Enter Your Legal Last Name:</label>
+            <input
+                type="text"
+                id="lastname"
+                value={studentInfo.lastname}
+                //pattern="[A-Z][a-z]"
+                //size="120"
+                placeholder="Legal Last Name"
+                onChange={handleInfoChange}
+                required></input>
 
+            <label htmlFor="name">Enter BCIT STUDENT ID:</label>
+            <input
+                type="text"
+                id="studentid"
+                value={studentInfo.studentid}
+                //pattern="^A+\d*"
+                //size="9" minLength="9"
+                placeholder="A0"
+                onChange={handleInfoChange}
+                required></input>
 
-<label htmlFor="name">Enter Your Legal Last Name:</label>
-        <input type="name" id="last"
-       pattern="[A-Z][a-z]" size="120" placeholder="Legal Last Name" required></input>
+            <label htmlFor="email">Enter your @my.bcit.ca /@bcit.ca email:</label>
+            <input
+                type="text"
+                id="email"
+                value={studentInfo.email}
+                //pattern=".+@my.bcit.ca | .+@bcit.ca"
+                //size="100"
+                placeholder="JohnDoe@my.bcit.ca"
+                onChange={handleInfoChange}
+                required></input>
 
-<label htmlFor="name">Enter BCIT STUDENT ID:</label>
-        <input type="student" id="student"
-       pattern="^A+\d*" size="9" minLength="9" placeholder="A0" required></input>
-
-<label htmlFor="email">Enter your @my.bcit.ca /@bcit.ca email:</label>
-        <input type="email" id="email"
-       pattern=".+@my.bcit.ca | .+@bcit.ca" size="100" placeholder="JohnDoe@my.bcit.ca" required></input>
-
-<label htmlFor="set"> SET A,B,C,D,E,F,Co-op,Other:</label>
-       <select name="set" id="set">
-        <option value="A">A</option>
-        <option value="B">B</option>
-        <option value="C">C</option>
-        <option value="D">D</option>
-        <option value="E">E</option>
-        <option value="F">F</option>
-        <option value="X">Co-op</option>
-        <option value="Other">Other</option>
-      </select>
+            <label htmlFor="set"> SET A,B,C,D,E,F,Co-op,Other:</label>
+            <select
+                name="set"
+                id="set"
+                value = {studentInfo.set}
+                onChange={handleInfoChange}>
+                <option value="A" >A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+                <option value="X">Co-op</option>
+                <option value="Other">Other</option>
+            </select>
         </div>
     )
 }
