@@ -38,10 +38,7 @@ function App() {
     
   }
 
-  function Deferral() {
-    return course.includes("Defer")
-    
-  }
+  
 console.log(!!course.find(c => c.selection == "Defer"))
   //unselect
   function unSelectedCourseList(list) {
