@@ -3,13 +3,13 @@ import React, { Fragment } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import '../App.css';
 //COMPONENTS
-import Header from "./header"
+import Header from "./Header"
 import Banner from "./Banner.js"
 import NavBar from "./NavBar.js"
 import Content from "./Content.js"
 import Titles from "./Titles.js"
 import Buttons from "./Buttons.js"
-import Footer from "./footer"
+import Footer from "./Footer"
 
 export default function Home() {
     return (

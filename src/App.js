@@ -5,13 +5,13 @@ import axios from 'axios';
 
 
 //COMPONENTS
-import Header from "./components/header"
+import Header from "./components/Header"
 import Banner from "./components/Banner.js"
 import NavBar from "./components/NavBar.js"
 import Content from "./components/Content.js"
 import Titles from "./components/Titles.js"
 import Buttons from "./components/Buttons.js"
-import Footer from "./components/footer"
+import Footer from "./components/Footer"
 
 import Home from "./components/Home.js"
 
