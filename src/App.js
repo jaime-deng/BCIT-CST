@@ -131,8 +131,9 @@ function App() {
         <Banner />
         <NavBar />
         <Content />
-        <Titles text={"Section 1: Student Information"} />
+
         <form onSubmit={handleSubmit}>
+          <Titles text={"Section 1: Student Information"} />
           <FormSelect studentInfo={studentInfo} handleInfoChange={handleInfoChange} />
 
           <Titles text={"Section 2: Option Selection"} />
@@ -149,7 +150,6 @@ function App() {
             />
             <Options id={6} state={course} number="Sixth choice" choicesid="six" change={selectChanged} unSelectedCourseList={unSelectedCourseList}
             />
-
           </div>
           <hr />
           <Buttons />
