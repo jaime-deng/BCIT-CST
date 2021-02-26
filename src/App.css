@@ -99,15 +99,6 @@ footer {
   padding-top: 2vmin;
 }
 
-form{
-  margin: 2vw;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-
-  
-}
 label{
   display:flex;
   width: 15vw;
