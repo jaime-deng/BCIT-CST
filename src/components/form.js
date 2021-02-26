@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
 const FormSelect = ({ studentInfo, handleInfoChange }) => {
     return (
-        <div>
+        <div id="studid">
             <label htmlFor="name">Enter Your Legal First Name:</label>
             <input type="text"
                 id="firstname"
@@ -39,7 +39,7 @@ const FormSelect = ({ studentInfo, handleInfoChange }) => {
                 type="text"
                 id="studentid"
                 value={studentInfo.studentid}
-                pattern="^A+\d*{9}"
+                pattern="^A+\d*"
                 size="20" minLength="9"
                 placeholder="A0"
                 onChange={handleInfoChange}

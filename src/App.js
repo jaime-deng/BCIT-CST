@@ -13,12 +13,12 @@ import Titles from "./components/Titles.js"
 import Buttons from "./components/Buttons.js"
 import Footer from "./components/Footer"
 
-import Home from "./components/Home.js"
+//import Home from "./components/Home.js"
 
 
 //import Select from './Select';
-import FormSelect from "./components/form";
-import Options from "./components/option"
+import FormSelect from "./components/Form";
+import Options from "./components/Option"
 
 const courseList = ["Web & Mobile", "AI & Machine", "Programming Paradigms", "Technical Programming", "Cloud Computing (DTC)", "Predictive Analytics (DTC)", "Defer"]
 function App() {
@@ -124,7 +124,7 @@ function App() {
   }
   function handleSubmit(e) {
     e.preventDefault()
-
+console.log(course.three)
     axios.post('/user/createStudentInfo', {
       firstName: studentInfo.firstname,
       lastName: studentInfo.lastname,

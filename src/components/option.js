@@ -28,9 +28,9 @@ const Options = ({ id, state, number, unSelectedCourseList,choicesid,change}) =>
       opts.push(<option key={item} value={item} >{item}</option>)
     })
   }
-  console.log(opts);
+  //console.log(opts);
   return (
-    <div >
+    <div className="selector">
      <label htmlFor="set"> {number}</label>
       <select onChange={change} name={choicesid} id={choicesid} disabled={disabled} required>
         {opts}
