@@ -41,6 +41,25 @@ function App() {
     set: 'A'
   })
 
+  //the initial state of options
+  const initialState = {
+    one: '',
+    two: '',
+    three: '',
+    four: '',
+    five: '',
+    six: ''
+  }
+
+  const clearState = () => {
+    setCourse({...initialState});
+  }
+
+  
+  function handleClear(event) {
+    event.preventDefault();
+    clearState();
+  }
   //when change occur will target the select and update the setCourse
   function selectChanged(event) {
     const targetId = event.target.id;
@@ -151,6 +170,8 @@ function App() {
             <Options id={6} state={course} number="Sixth choice" choicesid="six" change={selectChanged} unSelectedCourseList={unSelectedCourseList}
             />
           </div>
+
+          <button onClick={handleClear}>Reset options</button>
           <hr />
           <Buttons />
         </form>
