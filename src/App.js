@@ -73,7 +73,10 @@ function App() {
         ["four"]: selection,
         ["five"]: selection
       });
-    } else if (targetId == "two" && selection == "Defer") {
+    } //test for another else if when user hasn't pick first choice
+    
+     
+    else if (targetId == "two" && selection == "Defer") {
       setCourse({
         ...course,
         [targetId]: selection,

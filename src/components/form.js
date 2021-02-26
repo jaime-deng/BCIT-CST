@@ -7,8 +7,8 @@ const FormSelect = ({ studentInfo, handleInfoChange }) => {
             <input type="text"
                 id="firstname"
                 value={studentInfo.firstname}
-                //pattern="[A-Z][a-z]"
-                //maxLength="120"
+                pattern="[A-Za-z]{1,40}"
+                //maxLength="50"
                 placeholder="Legal First Name"
                 onChange={handleInfoChange}
                 required></input>
@@ -18,8 +18,8 @@ const FormSelect = ({ studentInfo, handleInfoChange }) => {
                 type="text"
                 id="prefername"
                 value={studentInfo.prefername}
-                //pattern="[A-Z][a-z]" size="120"
-                placeholder="Prefer Name"
+                pattern="[A-Za-z]{1,40}"
+                placeholder="Preferred Name"
                 onChange={handleInfoChange}
                 required></input>
 
@@ -28,8 +28,8 @@ const FormSelect = ({ studentInfo, handleInfoChange }) => {
                 type="text"
                 id="lastname"
                 value={studentInfo.lastname}
-                //pattern="[A-Z][a-z]"
-                //size="120"
+                pattern="[A-Za-z]{1,50}"
+                
                 placeholder="Legal Last Name"
                 onChange={handleInfoChange}
                 required></input>
@@ -39,8 +39,8 @@ const FormSelect = ({ studentInfo, handleInfoChange }) => {
                 type="text"
                 id="studentid"
                 value={studentInfo.studentid}
-                //pattern="^A+\d*"
-                //size="9" minLength="9"
+                pattern="^A+\d*{9}"
+                size="20" minLength="9"
                 placeholder="A0"
                 onChange={handleInfoChange}
                 required></input>
@@ -50,8 +50,9 @@ const FormSelect = ({ studentInfo, handleInfoChange }) => {
                 type="text"
                 id="email"
                 value={studentInfo.email}
-                //pattern=".+@my.bcit.ca | .+@bcit.ca"
-                //size="100"
+                pattern=".+@my.bcit.ca|.+@bcit.ca"
+                
+                size="40"
                 placeholder="JohnDoe@my.bcit.ca"
                 onChange={handleInfoChange}
                 required></input>
