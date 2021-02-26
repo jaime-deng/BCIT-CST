@@ -32,7 +32,7 @@ const Options = ({ id, state, number, unSelectedCourseList,choicesid,change}) =>
   return (
     <div >
      <label htmlFor="set"> {number}</label>
-      <select onChange={change} name={choicesid} id={choicesid} disabled={disabled}>
+      <select onChange={change} name={choicesid} id={choicesid} disabled={disabled} required>
         {opts}
       </select>
     </div>

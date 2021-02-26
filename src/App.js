@@ -138,6 +138,7 @@ function App() {
       fifthChoice: course.five,
       sixthChoice: course.six,
     })
+      
       .then((response) => {
         console.log(response);
       }, (error) => {
