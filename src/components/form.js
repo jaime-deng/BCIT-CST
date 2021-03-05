@@ -7,13 +7,14 @@ const FormSelect = ({ studentInfo, handleInfoChange }) => {
             <input type="text"
                 id="firstname"
                 value={studentInfo.firstname}
-                pattern="[A-Za-z]{1,40}"
+                
                 //maxLength="50"
                 placeholder="Legal First Name"
                 onChange={handleInfoChange}
-                required></input>
+                required
+                pattern="[A-Za-z]{1,50}"></input>
 
-            <label htmlFor="name">Enter Your Prefer Name:</label>
+            <label htmlFor="name">Enter Your Preferred Name:</label>
             <input
                 type="text"
                 id="prefername"

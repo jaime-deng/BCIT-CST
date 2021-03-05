@@ -24,12 +24,12 @@ const courseList = ["Web & Mobile", "AI & Machine", "Programming Paradigms", "Te
 function App() {
   // state of the array of course list
   const [course, setCourse] = useState({
-    one: '',
-    two: '',
-    three: '',
-    four: '',
-    five: '',
-    six: ''
+    one: 'Defer',
+    two: 'Defer',
+    three: 'Defer',
+    four: 'Defer',
+    five: 'Defer',
+    six: 'Defer'
   });
 
   const [studentInfo, setStudentInfo] = useState({
@@ -43,12 +43,12 @@ function App() {
 
   //the initial state of options
   const initialState = {
-    one: '',
-    two: '',
-    three: '',
-    four: '',
-    five: '',
-    six: ''
+    one: 'Defer',
+    two: 'Defer',
+    three: 'Defer',
+    four: 'Defer',
+    five: 'Defer',
+    six: 'Defer'
   }
 
   const clearState = () => {
