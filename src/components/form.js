@@ -1,6 +1,7 @@
 import React from 'react';
 
 const FormSelect = ({ studentInfo, handleInfoChange }) => {
+
     return (
         <div id="studid">
             <label htmlFor="name">Enter Your Legal First Name:</label>
@@ -12,17 +13,20 @@ const FormSelect = ({ studentInfo, handleInfoChange }) => {
                 placeholder="Legal First Name"
                 onChange={handleInfoChange}
                 required
-                pattern="[A-Za-z]{1,50}"></input>
+                pattern="[A-Za-z]{1,50}"
+               
+                />
 
             <label htmlFor="name">Enter Your Preferred Name:</label>
             <input
                 type="text"
                 id="prefername"
                 value={studentInfo.prefername}
-                pattern="[A-Za-z]{1,40}"
+                pattern="[A-Za-z]{1,50}"
                 placeholder="Preferred Name"
                 onChange={handleInfoChange}
-                required></input>
+                
+                required/>
 
             <label htmlFor="name">Enter Your Legal Last Name:</label>
             <input
@@ -33,7 +37,8 @@ const FormSelect = ({ studentInfo, handleInfoChange }) => {
                 
                 placeholder="Legal Last Name"
                 onChange={handleInfoChange}
-                required></input>
+               
+                required/>
 
             <label htmlFor="name">Enter BCIT STUDENT ID:</label>
             <input
@@ -44,7 +49,7 @@ const FormSelect = ({ studentInfo, handleInfoChange }) => {
                 size="20" minLength="9"
                 placeholder="A0"
                 onChange={handleInfoChange}
-                required></input>
+                required/>
 
             <label htmlFor="email">Enter your @my.bcit.ca /@bcit.ca email:</label>
             <input
@@ -56,7 +61,7 @@ const FormSelect = ({ studentInfo, handleInfoChange }) => {
                 size="40"
                 placeholder="JohnDoe@my.bcit.ca"
                 onChange={handleInfoChange}
-                required></input>
+                required/>
 
             <label htmlFor="set"> SET A,B,C,D,E,F,Co-op,Other:</label>
             <select
