@@ -13,7 +13,8 @@ import Titles from "./components/Titles.js";
 import Buttons from "./components/Buttons.js";
 import Footer from "./components/Footer";
 
-//import Home from "./components/Home.js"
+//JS
+import Validate from "./js/Validate";
 
 
 //import Select from './Select';
@@ -24,7 +25,7 @@ const courseList = ["Web & Mobile", "AI & Machine", "Programming Paradigms", "Te
 function App() {
   // state of the array of course list
   const [course, setCourse] = useState({
-    one: 'Defer',
+    one: 'Please Select',
     two: 'Defer',
     three: 'Defer',
     four: 'Defer',
@@ -38,8 +39,16 @@ function App() {
     prefername: '',
     studentid: '',
     email: '',
-    set: 'A'
+    set: 'A',
+    
+
   })
+  // nameError: "Name must be Alphabetical letters and minimum 2 letters",
+  // idError: "Must begin with A0, and have 7 numbers afterwards",
+  // emailError: "Must end with @my.bcit.ca or @bcit.ca",
+  // setError: "Must select a set"
+
+  const [errors, setErrors] = useState({})
 
   //the initial state of options
   const initialState = {
@@ -122,6 +131,10 @@ function App() {
   function handleInfoChange(event) {
     setStudentInfo({ ...studentInfo, [event.target.id]: event.target.value })
   }
+
+  
+
+
   function handleSubmit(e) {
     e.preventDefault()
 console.log(course.three)

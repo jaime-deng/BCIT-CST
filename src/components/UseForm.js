@@ -1,56 +1,34 @@
-import React, { useState } from 'react'
-import { makeStyles } from "@material-ui/core";
+import { useState, useEffect } from 'react';
 
-export function useForm(initialFValues, validateOnChange = false, validate) {
+const useForm = (callback, validate) => {
 
+  const [studentInfo, setstudentInfo] = useState({});
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const [values, setValues] = useState(initialFValues);
-    const [errors, setErrors] = useState({});
-
-    const handleInputChange = e => {
-        const { name, value } = e.target
-        setValues({
-            ...values,
-            [name]: value
-        })
-        if (validateOnChange)
-            validate({ [name]: value })
+  useEffect(() => {
+    if (Object.keys(errors).length === 0 && isSubmitting) {
+      callback();
     }
+  }, [errors]);
 
-    const resetForm = () => {
-        setValues(initialFValues);
-        setErrors({})
-    }
+  const handleSubmit = (event) => {
+    if (event) event.preventDefault();
+    setErrors(validate(studentInfo));
+    setIsSubmitting(true);
+  };
 
+  const handleChange = (event) => {
+    event.persist();
+    setstudentInfo(studentInfo => ({ ...studentInfo, [event.target.name]: event.target.value }));
+  };
 
-    return {
-        values,
-        setValues,
-        errors,
-        setErrors,
-        handleInputChange,
-        resetForm
+  return {
+    handleChange,
+    handleSubmit,
+    studentInfo,
+    errors,
+  }
+};
 
-    }
-}
-
-
-const useStyles = makeStyles(theme => ({
-    root: {
-        '& .MuiFormControl-root': {
-            width: '80%',
-            margin: theme.spacing(1)
-        }
-    }
-}))
-
-export function FormA(props) {
-
-    const classes = useStyles();
-    const { children, ...other } = props;
-    return (
-        <form className={classes.root} autoComplete="off" {...other}>
-            {props.children}
-        </form>
-    )
-}
+export default useForm;

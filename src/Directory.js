@@ -1,5 +1,4 @@
 import React from 'react';
-import { finDRenderedComponentWithType } from 'react-dom/test-utils';
 import App from "./App";
 import Home from "./components/Home";
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom'
