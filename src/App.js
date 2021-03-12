@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import './App.css';
+
 import axios from 'axios';
 
 
@@ -13,9 +12,8 @@ import Titles from "./components/Titles.js";
 import Buttons from "./components/Buttons.js";
 import Footer from "./components/Footer";
 
-//JS
-import Validate from "./js/Validate";
-
+//JS Folder
+import validateInfo from "../src/js/Validate";
 
 //import Select from './Select';
 import FormSelect from "./components/Form";
@@ -39,17 +37,17 @@ function App() {
     prefername: '',
     studentid: '',
     email: '',
-    set: 'A',
-    
-
+    set: 'A'
   })
-  // nameError: "Name must be Alphabetical letters and minimum 2 letters",
-  // idError: "Must begin with A0, and have 7 numbers afterwards",
-  // emailError: "Must end with @my.bcit.ca or @bcit.ca",
-  // setError: "Must select a set"
 
-  const [errors, setErrors] = useState({})
-
+  const [error, setError] = useState({
+    firstname: 'Must be Alphabetical ',
+    lastname: 'Must be Alphabetical ',
+    prefername: 'Must be Alphabetical ',
+    studentid: 'Must begin with A0, and have 7 numbers afterwards',
+    email: 'Must end with @my.bcit.ca or @bcit.ca',
+    
+  })
   //the initial state of options
   const initialState = {
     one: 'Defer',
@@ -131,13 +129,10 @@ function App() {
   function handleInfoChange(event) {
     setStudentInfo({ ...studentInfo, [event.target.id]: event.target.value })
   }
-
-  
-
-
   function handleSubmit(e) {
-    e.preventDefault()
-console.log(course.three)
+    
+    e.preventDefault();
+
     axios.post('/user/createStudentInfo', {
       firstName: studentInfo.firstname,
       lastName: studentInfo.lastname,
@@ -161,7 +156,7 @@ console.log(course.three)
 
 
   return (
-    <Router>
+    
       <div className="App">
         <Header />
         <Banner />
@@ -170,7 +165,8 @@ console.log(course.three)
 
         <form onSubmit={handleSubmit}>
           <Titles text={"Section 1: Student Information"} />
-          <FormSelect studentInfo={studentInfo} handleInfoChange={handleInfoChange} />
+          <FormSelect studentInfo={studentInfo} handleInfoChange={handleInfoChange} error={error}
+            />
 
           <Titles text={"Section 2: Option Selection"} />
           <div className="options">
@@ -194,7 +190,7 @@ console.log(course.three)
         </form>
         <Footer />
       </div>
-    </Router>
+    
   );
 }
 export default App;

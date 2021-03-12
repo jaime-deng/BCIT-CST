@@ -7,7 +7,7 @@ function Directory() {
     return (
         <Router>
           <div className="sites">
-              <Route path="/" component={Home} />
+              <Route exact path="/" component={Home} />
               <Route path="/select" component={App}/>
 
               </div>  
