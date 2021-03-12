@@ -22,6 +22,15 @@ import Options from "./components/option"
 
 const courseList = ["Web & Mobile", "AI & Machine", "Programming Paradigms", "Technical Programming", "Cloud Computing (DTC)", "Predictive Analytics (DTC)", "Defer"]
 function App() {
+
+  const [selectionList, setSelectionList] = useState({
+    "one": 0,
+    "two": 0,
+    "three": 0,
+    "four": 0,
+    "five": 0,
+    "six": 0
+  });
   // state of the array of course list
   const [course, setCourse] = useState({
     one: '',
@@ -41,10 +50,21 @@ function App() {
     set: 'A'
   })
 
+  function getSelectionId(targetId, selection){
+    console.log(selection)
+    axios.get(`/user/getSelectionId/${selection}`)
+    .then(function (response) {
+      console.log(response.data);
+      console.log(response.data.id)
+      setSelectionList({...selectionList, [targetId] : response.data.id})
+      console.log(selectionList);
+    })
+  }
   //when change occur will target the select and update the setCourse
   function selectChanged(event) {
     const targetId = event.target.id;
     const selection = event.target.value;
+    
     if (targetId == "one" && selection == "Defer") {
       setCourse({
         ...course,
@@ -86,6 +106,8 @@ function App() {
         [targetId]: selection
       });
     }
+
+    getSelectionId(targetId, selection)
   }
 
   function unSelectedCourseList(list) {
@@ -109,12 +131,7 @@ function App() {
       studentNo: studentInfo.studentid,
       bcitEmail: studentInfo.email,
       studentSet: studentInfo.set,
-      firstChoice: course.one,
-      secondChoice: course.two,
-      thirdChoice: course.three,
-      fourthChoice: course.four,
-      fifthChoice: course.five,
-      sixthChoice: course.six,
+      selectionList : selectionList
     })
       .then((response) => {
         console.log(response);
