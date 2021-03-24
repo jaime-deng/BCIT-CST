@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { useState, useRef } from "react";
+import { BrowserRouter as Router, Route, Link, Switch, useHistory } from "react-router-dom";
 import './App.css';
 import axios from 'axios';
 
@@ -145,6 +145,13 @@ console.log(course.three)
         console.log(error);
       });
   }
+  // button routing
+  const history = useHistory();
+  const onButtonClick = () => {
+      
+          history.push("/");
+      
+  }
 
 
   return (
@@ -177,7 +184,10 @@ console.log(course.three)
 
           <button onClick={handleClear}>Reset options</button>
           <hr />
-          <Buttons />
+          <div className="Buttons">
+            <button onClick={onButtonClick} className="Button1">PREVIOUS</button>
+            <button type="submit" className="Button2">SUBMIT</button>
+        </div>
         </form>
         <Footer />
       </div>
