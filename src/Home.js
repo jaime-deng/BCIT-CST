@@ -20,11 +20,30 @@ export default function Home() {
         // `current` points to the mounted text input element
         if (!inputEl.current.checked) {
             alert("Please check the box before continuing")
-        }else {
+        } else {
             history.push("/select");
         };
     }
+    const buttonStyle = {
+        color: "white",
+        backgroundColor: "DodgerBlue",
+        padding: "10px",
+        fontFamily: "Arial"
+    };
 
+    const buttonContainer = {
+        display: "flex",
+        flexDirection: "column"
+    };
+
+    const checkboxContainer = {
+        display: "flex",
+        flexDirection: "row"
+    };
+
+    const button = {
+        width: "100px"
+    };
 
     return (
         <div className="Home">
@@ -34,7 +53,10 @@ export default function Home() {
 
             <NavBar />
 
+            < br />
+
             <Content />
+            <br />
 
             <Titles text={"Selection Criteria"} />
 
@@ -44,9 +66,14 @@ export default function Home() {
 
             <p> Lorem ipsum</p>
 
-            <div>
-                <input ref={inputEl} type="checkbox" />
-                <button onClick={onButtonClick}>Next</button>
+            <div style={buttonContainer}>
+                <div style={checkboxContainer}>
+                    <input style={buttonStyle} ref={inputEl} type="checkbox" />
+                    <p>     I have read and understand the option selection process</p>
+                </div>
+
+
+                <button style={button} className="Button1" onClick={onButtonClick}>Next</button>
             </div>
 
 
