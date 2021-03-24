@@ -1,14 +1,15 @@
 import React from 'react';
 
-const FormSelect = ({ studentInfo, handleInfoChange }) => {
+const FormSelect = ({ studentInfo, handleInfoChange, error}) => {
 
     return (
         <div id="studid">
             <label htmlFor="name">Enter Your Legal First Name:</label>
+            <div className="errors" style={{color: "red"}}>{error.firstname ? "Must be Alphabetical " : error.firstname=""}
             <input type="text"
                 id="firstname"
                 value={studentInfo.firstname}
-                
+                name="firstname"
                 //maxLength="50"
                 placeholder="Legal First Name"
                 onChange={handleInfoChange}
@@ -16,8 +17,11 @@ const FormSelect = ({ studentInfo, handleInfoChange }) => {
                 pattern="[A-Za-z]{1,50}"
                
                 />
-
+            </div>
+               
+            
             <label htmlFor="name">Enter Your Preferred Name:</label>
+            <div className="errors" style={{color: "red"}}>{error.prefername}
             <input
                 type="text"
                 id="prefername"
@@ -27,8 +31,9 @@ const FormSelect = ({ studentInfo, handleInfoChange }) => {
                 onChange={handleInfoChange}
                 
                 required/>
-
+                </div>
             <label htmlFor="name">Enter Your Legal Last Name:</label>
+            <div className="errors" style={{color: "red"}}>{error.lastname}
             <input
                 type="text"
                 id="lastname"
@@ -39,8 +44,9 @@ const FormSelect = ({ studentInfo, handleInfoChange }) => {
                 onChange={handleInfoChange}
                
                 required/>
-
+                </div>
             <label htmlFor="name">Enter BCIT STUDENT ID:</label>
+            <div className="errors" style={{color: "red"}}>{error.studentid}
             <input
                 type="text"
                 id="studentid"
@@ -50,8 +56,9 @@ const FormSelect = ({ studentInfo, handleInfoChange }) => {
                 placeholder="A0"
                 onChange={handleInfoChange}
                 required/>
-
+            </div>
             <label htmlFor="email">Enter your @my.bcit.ca /@bcit.ca email:</label>
+            <div className="errors" style={{color: "red"}}>{error.email}
             <input
                 type="text"
                 id="email"
@@ -62,7 +69,7 @@ const FormSelect = ({ studentInfo, handleInfoChange }) => {
                 placeholder="JohnDoe@my.bcit.ca"
                 onChange={handleInfoChange}
                 required/>
-
+            </div>
             <label htmlFor="set"> SET A,B,C,D,E,F,Co-op,Other:</label>
             <select
                 name="set"

@@ -13,8 +13,8 @@ import Titles from "./components/Titles.js";
 import Buttons from "./components/Buttons.js";
 import Footer from "./components/Footer";
 
-//import Home from "./components/Home.js"
-
+//JS Folder
+import validateInfo from "../src/js/Validate";
 
 //import Select from './Select';
 import FormSelect from "./components/Form";
@@ -24,7 +24,7 @@ const courseList = ["Web & Mobile", "AI & Machine", "Programming Paradigms", "Te
 function App() {
   // state of the array of course list
   const [course, setCourse] = useState({
-    one: 'Defer',
+    one: 'Please Select',
     two: 'Defer',
     three: 'Defer',
     four: 'Defer',
@@ -41,6 +41,14 @@ function App() {
     set: 'A'
   })
 
+  const [error, setError] = useState({
+    firstname: 'Must be Alphabetical ',
+    lastname: 'Must be Alphabetical ',
+    prefername: 'Must be Alphabetical ',
+    studentid: 'Must begin with A0, and have 7 numbers afterwards',
+    email: 'Must end with @my.bcit.ca or @bcit.ca',
+    
+  })
   //the initial state of options
   const initialState = {
     one: 'Defer',
@@ -123,8 +131,9 @@ function App() {
     setStudentInfo({ ...studentInfo, [event.target.id]: event.target.value })
   }
   function handleSubmit(e) {
-    e.preventDefault()
-console.log(course.three)
+    
+    e.preventDefault();
+
     axios.post('/user/createStudentInfo', {
       firstName: studentInfo.firstname,
       lastName: studentInfo.lastname,
@@ -155,7 +164,7 @@ console.log(course.three)
 
 
   return (
-    <Router>
+    
       <div className="App">
         <Header />
         <Banner />
@@ -164,7 +173,8 @@ console.log(course.three)
 
         <form onSubmit={handleSubmit}>
           <Titles text={"Section 1: Student Information"} />
-          <FormSelect studentInfo={studentInfo} handleInfoChange={handleInfoChange} />
+          <FormSelect studentInfo={studentInfo} handleInfoChange={handleInfoChange} error={error}
+            />
 
           <Titles text={"Section 2: Option Selection"} />
           <div className="options">
@@ -191,7 +201,7 @@ console.log(course.three)
         </form>
         <Footer />
       </div>
-    </Router>
+    
   );
 }
 export default App;
