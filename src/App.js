@@ -22,6 +22,16 @@ import Options from "./components/Option";
 
 const courseList = ["Web & Mobile", "AI & Machine", "Programming Paradigms", "Technical Programming", "Cloud Computing (DTC)", "Predictive Analytics (DTC)", "Defer"]
 function App() {
+
+  //state of priorities 
+  const [selectionList, setSelectionList] = useState({
+    "one": 0,
+    "two": 0,
+    "three": 0,
+    "four": 0,
+    "five": 0,
+    "six": 0
+  });
   // state of the array of course list
   const [course, setCourse] = useState({
     one: 'Please Select',
@@ -68,6 +78,18 @@ function App() {
     event.preventDefault();
     clearState();
   }
+//function that grabs id of the selected coure
+  function getSelectionId(targetId, selection){
+    console.log(selection)
+    axios.get(`/user/getSelectionId/${selection}`)
+    .then(function (response) {
+      console.log(response.data);
+      console.log(response.data.id)
+      setSelectionList({...selectionList, [targetId] : response.data.id})
+      console.log(selectionList);
+    })
+  }
+
   //when change occur will target the select and update the setCourse
   function selectChanged(event) {
     const targetId = event.target.id;
@@ -116,6 +138,8 @@ function App() {
         [targetId]: selection
       });
     }
+
+    getSelectionId(targetId, selection)
   }
 
   function unSelectedCourseList(list) {
