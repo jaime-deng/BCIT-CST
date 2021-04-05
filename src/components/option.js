@@ -13,7 +13,11 @@ const Options = ({ id, state, number, unSelectedCourseList, choicesid, change })
     disabled = true
     opts.push(<option value="Defer" disabled={true} selected={true}>Defer</option>)
 
-  } else if (state[choicesid] == '') {
+  } else if (state[flag[id - 1]] == "") {
+    disabled = true
+    opts.push(<option value="select" disabled={true} selected={true}>Please select</option>)
+  }
+  else if (state[choicesid] == '') {
 
     opts.push(<option value="select" hidden selected>Please select</option>)
     unSelectedCourseList().map(item => {

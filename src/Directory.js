@@ -1,6 +1,8 @@
 import React from 'react';
 import App from "./App";
 import Home from "./Home";
+import Login from "./Login"
+import Logout from "./Logout"
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 function Directory() {
@@ -9,6 +11,8 @@ function Directory() {
             <Switch>
                 <Route  exact path="/" component={Home} />
                 <Route path="/select" component={App} />
+                <Route path="/login" component={Login} />
+                <Route path="/logout" component={Logout} />
             </Switch>
         </Router>
     )

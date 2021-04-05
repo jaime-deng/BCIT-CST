@@ -18,6 +18,7 @@ import validateInfo from "../src/js/Validate";
 
 //import Select from './Select';
 import FormSelect from "./components/Form";
+import NewForm from "./components/NewForm";
 import Options from "./components/Option";
 
 const courseList = ["Web & Mobile", "AI & Machine", "Programming Paradigms", "Technical Programming", "Cloud Computing (DTC)", "Predictive Analytics (DTC)", "Defer"]
@@ -25,21 +26,21 @@ function App() {
 
   //state of priorities 
   const [selectionList, setSelectionList] = useState({
-    "one": 0,
-    "two": 0,
-    "three": 0,
-    "four": 0,
-    "five": 0,
-    "six": 0
+    "one": 7,
+    "two": 7,
+    "three": 7,
+    "four": 7,
+    "five": 7,
+    "six": 7
   });
   // state of the array of course list
   const [course, setCourse] = useState({
-    one: 'Please Select',
-    two: 'Defer',
-    three: 'Defer',
-    four: 'Defer',
-    five: 'Defer',
-    six: 'Defer'
+    one: '',
+    two: '',
+    three: '',
+    four: '',
+    five: '',
+    six: ''
   });
 
   const [studentInfo, setStudentInfo] = useState({
@@ -48,7 +49,12 @@ function App() {
     prefername: '',
     studentid: '',
     email: '',
-    set: 'A'
+    set: 'A',
+    firstnameError: '',
+    lastnameError: '',
+    prefernameError: '',
+    studentidError: '',
+    emailError: ''
   })
 
   const [error, setError] = useState({
@@ -57,37 +63,47 @@ function App() {
     prefername: 'Must be Alphabetical ',
     studentid: 'Must begin with A0, and have 7 numbers afterwards',
     email: 'Must end with @my.bcit.ca or @bcit.ca',
-    
+
   })
   //the initial state of options
   const initialState = {
-    one: 'Defer',
-    two: 'Defer',
-    three: 'Defer',
-    four: 'Defer',
-    five: 'Defer',
-    six: 'Defer'
+    one: '',
+    two: '',
+    three: '',
+    four: '',
+    five: '',
+    six: ''
   }
 
   const clearState = () => {
-    setCourse({...initialState});
+    setCourse({ ...initialState });
   }
 
-  
+
   function handleClear(event) {
     event.preventDefault();
     clearState();
+    setSelectionList({
+      ...selectionList,
+      "one": 7,
+      "two": 7,
+      "three": 7,
+      "four": 7,
+      "five": 7,
+      "six": 7
+
+    })
   }
-//function that grabs id of the selected coure
-  function getSelectionId(targetId, selection){
+  //function that grabs id of the selected coure
+  function getSelectionId(targetId, selection) {
     console.log(selection)
     axios.get(`/user/getSelectionId/${selection}`)
-    .then(function (response) {
-      console.log(response.data);
-      console.log(response.data.id)
-      setSelectionList({...selectionList, [targetId] : response.data.id})
-      console.log(selectionList);
-    })
+      .then(function (response) {
+        console.log(response.data);
+        console.log(response.data.id)
+        setSelectionList({ ...selectionList, [targetId]: response.data.id })
+        console.log(selectionList);
+      })
   }
 
   //when change occur will target the select and update the setCourse
@@ -104,8 +120,8 @@ function App() {
         ["five"]: selection
       });
     } //test for another else if when user hasn't pick first choice
-    
-     
+
+
     else if (targetId == "two" && selection == "Defer") {
       setCourse({
         ...course,
@@ -154,78 +170,153 @@ function App() {
   function handleInfoChange(event) {
     setStudentInfo({ ...studentInfo, [event.target.id]: event.target.value })
   }
-  function handleSubmit(e) {
+
+  // function which validate all the input fields
+
+  function validate() {
+
+    console.log("validate function called")
+    let firstnameError = ''
+    let lastnameError = ''
+    let prefernameError = ''
+    let studentidError = ''
+    let emailError = ''
+
+
+    let nameRegex = /[a-zA-z]{1,50}/g;
+    let studentidRegex = /^A0[0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/g;
+    let emailRegex = /^([a-z1-9]{1,}@my.bcit.ca)|([a-z1-9]{1,}@bcit.ca)$/g;
+
+    if (!studentInfo.firstname.match(nameRegex) ||
+      !studentInfo.lastname.match(nameRegex) ||
+      !studentInfo.prefername.match(nameRegex) ||
+      !studentInfo.studentid.match(studentidRegex) ||
+      !studentInfo.email.match(emailRegex)) {
+
+      if (!studentInfo.firstname.match(nameRegex)) {
+        firstnameError = "Please enter the valid First Name!"
+      }else{
+        firstnameError = ""
+      }
+      if (!studentInfo.lastname.match(nameRegex)) {
+        lastnameError = "please enter the valid Last Name!"
+      }else{
+        lastnameError = ""
+      }
+      if (!studentInfo.prefername.match(nameRegex)) {
+        prefernameError = "Please enter the valid Prefered Name!"
+      }else{
+        prefernameError = ""
+      }
+      if (!studentInfo.studentid.match(studentidRegex)) {
+        studentidError = "Please enter the valid Student ID!"
+      }else{
+        studentidError = ""
+      }
+      if (!studentInfo.email.match(emailRegex)) {
+        emailError = "Please enter the valid BCIT Email!"
+      }else{
+        emailError = ""
+      }
+
+
+      setStudentInfo({
+        ...studentInfo,
+        firstnameError: firstnameError,
+        lastnameError: lastnameError,
+        prefernameError: prefernameError,
+        studentidError: studentidError,
+        emailError: emailError
+      })
+
+      return false
+    }else{
+      setStudentInfo({
+        ...studentInfo,
+        firstnameError: '',
+        lastnameError: '',
+        prefernameError: '',
+        studentidError: '',
+        emailError: ''
+      })
+      return true
+    }
     
+  }
+
+  function handleSubmit(e) {
+
     e.preventDefault();
 
-    axios.post('/user/createStudentInfo', {
-      firstName: studentInfo.firstname,
-      lastName: studentInfo.lastname,
-      studentNo: studentInfo.studentid,
-      bcitEmail: studentInfo.email,
-      studentSet: studentInfo.set,
-      firstChoice: course.one,
-      secondChoice: course.two,
-      thirdChoice: course.three,
-      fourthChoice: course.four,
-      fifthChoice: course.five,
-      sixthChoice: course.six,
-    })
-      
-      .then((response) => {
-        console.log(response);
-      }, (error) => {
-        console.log(error);
-      });
+    let isValid = validate()
+    if (isValid) {
+      axios.post('/user/createStudentInfo', {
+        firstName: studentInfo.firstname,
+        lastName: studentInfo.lastname,
+        studentNo: studentInfo.studentid,
+        bcitEmail: studentInfo.email,
+        studentSet: studentInfo.set,
+        selectionList
+      })
+
+        .then((response) => {
+          console.log(response);
+        }, (error) => {
+          console.log(error);
+        });
+    }
   }
   // button routing
   const history = useHistory();
   const onButtonClick = () => {
-      
-          history.push("/");
-      
+
+    history.push("/");
+
   }
 
 
   return (
-    
-      <div className="App">
-        <Header />
-        <Banner />
-        <NavBar />
-        <Content />
 
-        <form onSubmit={handleSubmit}>
-          <Titles text={"Section 1: Student Information"} />
-          <FormSelect studentInfo={studentInfo} handleInfoChange={handleInfoChange} error={error}
-            />
+    <div className="App">
+      <Header />
+      <Banner />
+      <NavBar />
+      <Content />
 
-          <Titles text={"Section 2: Option Selection"} />
-          <div className="options">
-            <Options id={1} state={course} number="First choice" choicesid="one" change={selectChanged} unSelectedCourseList={unSelectedCourseList}
-            />
-            <Options id={2} state={course} number="Second choice" choicesid="two" change={selectChanged} unSelectedCourseList={unSelectedCourseList}
-            />
-            <Options id={3} state={course} number="Third choice" choicesid="three" change={selectChanged} unSelectedCourseList={unSelectedCourseList}
-            />
-            <Options id={4} state={course} number="Fourth choice" choicesid="four" change={selectChanged} unSelectedCourseList={unSelectedCourseList}
-            />
-            <Options id={5} state={course} number="Fifth choice" choicesid="five" change={selectChanged} unSelectedCourseList={unSelectedCourseList}
-            />
-            <Options id={6} state={course} number="Sixth choice" choicesid="six" change={selectChanged} unSelectedCourseList={unSelectedCourseList}
-            />
-          </div>
+      <form onSubmit={handleSubmit}>
+        <Titles text={"Section 1: Student Information"} />
+        {/* <FormSelect studentInfo={studentInfo} handleInfoChange={handleInfoChange} error={error}
+        /> */}
 
-          <button onClick={handleClear}>Reset options</button>
-          <hr />
-          <div className="Buttons">
-            <button onClick={onButtonClick} className="Button1">PREVIOUS</button>
-            <button type="submit" className="Button2">SUBMIT</button>
+        <NewForm studentInfo={studentInfo} handleInfoChange={handleInfoChange} error={error}
+        />
+
+        <Titles text={"Section 2: Option Selection (if you do not select any choice, all will be defered)"} />
+        <div className="options">
+          <Options id={1} state={course} number="First choice" choicesid="one" change={selectChanged} unSelectedCourseList={unSelectedCourseList}
+          />
+          <Options id={2} state={course} number="Second choice" choicesid="two" change={selectChanged} unSelectedCourseList={unSelectedCourseList}
+          />
+          <Options id={3} state={course} number="Third choice" choicesid="three" change={selectChanged} unSelectedCourseList={unSelectedCourseList}
+          />
+          <Options id={4} state={course} number="Fourth choice" choicesid="four" change={selectChanged} unSelectedCourseList={unSelectedCourseList}
+          />
+          <Options id={5} state={course} number="Fifth choice" choicesid="five" change={selectChanged} unSelectedCourseList={unSelectedCourseList}
+          />
+          <Options id={6} state={course} number="Sixth choice" choicesid="six" change={selectChanged} unSelectedCourseList={unSelectedCourseList}
+          />
         </div>
-        </form>
-        <Footer />
-      </div>
-    
+
+        <button onClick={handleClear}>Reset options</button>
+        <hr />
+        <div className="Buttons">
+          <button onClick={onButtonClick} className="Button1">PREVIOUS</button>
+          <button type="submit" className="Button2">SUBMIT</button>
+        </div>
+      </form>
+      <Footer />
+    </div>
+
   );
 }
 export default App;
