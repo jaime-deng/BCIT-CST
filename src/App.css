@@ -234,3 +234,13 @@ content: "";
   width: 200px;
   margin: 200px 200px;
 }
+
+.logout-button{
+  background-color: rgb(13, 62, 110);;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+  border: none;
+}

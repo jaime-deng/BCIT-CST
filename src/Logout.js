@@ -12,10 +12,6 @@ import axios from "axios";
 
 export default function Logout() {
 
-    useEffect(() => {
-        localStorage.removeItem('token')
-    })
-
     return (
         <div className="Home">
             <Header />
