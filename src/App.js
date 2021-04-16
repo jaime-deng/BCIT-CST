@@ -13,8 +13,7 @@ import Titles from "./components/Titles.js";
 import Buttons from "./components/Buttons.js";
 import Footer from "./components/Footer";
 
-//JS Folder
-import validateInfo from "../src/js/Validate";
+
 
 //import Select from './Select';
 import FormSelect from "./components/Form";

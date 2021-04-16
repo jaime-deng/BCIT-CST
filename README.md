@@ -45,38 +45,38 @@ This will create a build folder that has a minified version of the project. This
 
 ```
 .
-+-- _yarn.lock
-+-- _package-lock.json
-+-- _package.json
-+-- _test.md
-+-- _public
-|   +-- index.html
-+-- _src
-|   +-- App.css
-|   +-- App.js
-|   +-- App.test.js
-|   +-- BCIT_LOGO.png
-|   +-- Confirm.js
-|   +-- Directory.js
-|   +-- Home.js
-|   +-- index.css
-|   +-- index.js
-|   +-- login.js
-|   +-- logout.js
-|   +-- images
-|   +-- component
-|   |   +-- Banner.js
-|   |   +-- Button.js
-|   |   +-- ConfirmContent.js
-|   |   +-- Content.js
-|   |   +-- Footer.js
-|   |   +-- Form.js
-|   |   +-- Header.js
-|   |   +-- NavBar.js
-|   |   +-- NewForm.js
-|   |   +-- Option.js
-|   |   +-- Titles.js
-|   |   +-- UseForm.js
+|   yarn.lock
+|   package-lock.json
+|   package.json
+|   test.md
+|___public
+|   |   index.html
+|____src
+|   |    App.css
+|   |   App.js
+|   |   App.test.js
+|   |   BCIT_LOGO.png
+|   |   Confirm.js
+|   |   Directory.js
+|   |   Home.js
+|   |   index.css
+|   |   index.js
+|   |   login.js
+|   |   logout.js
+|   |   images
+|   |___component
+|   |   |    Banner.js
+|   |   |   Button.js
+|   |   |   ConfirmContent.js
+|   |   |   Content.js
+|   |   |   Footer.js
+|   |   |   Form.js
+|   |   |   Header.js
+|   |   |   NavBar.js
+|   |   |   NewForm.js
+|   |   |   Option.js
+|   |   |   Titles.js
+|   |   |   UseForm.js
 ```
 
 ## [Documentation]
