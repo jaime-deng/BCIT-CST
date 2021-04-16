@@ -52,31 +52,31 @@ This will create a build folder that has a minified version of the project. This
 |___public
 |   |   index.html
 |____src
-|   |    App.css
-|   |   App.js
-|   |   App.test.js
-|   |   BCIT_LOGO.png
-|   |   Confirm.js
-|   |   Directory.js
-|   |   Home.js
-|   |   index.css
-|   |   index.js
-|   |   login.js
-|   |   logout.js
-|   |   images
-|   |___component
-|   |   |    Banner.js
-|   |   |   Button.js
-|   |   |   ConfirmContent.js
-|   |   |   Content.js
-|   |   |   Footer.js
-|   |   |   Form.js
-|   |   |   Header.js
-|   |   |   NavBar.js
-|   |   |   NewForm.js
-|   |   |   Option.js
-|   |   |   Titles.js
-|   |   |   UseForm.js
+    |    App.css
+    |   App.js
+    |   App.test.js
+    |   BCIT_LOGO.png
+    |   Confirm.js
+    |   Directory.js
+    |   Home.js
+    |   index.css
+    |   index.js
+    |   login.js
+    |   logout.js
+    |   images
+    |___component
+        |    Banner.js
+        |   Button.js
+        |   ConfirmContent.js
+        |   Content.js
+        |   Footer.js
+        |   Form.js
+        |   Header.js
+        |   NavBar.js
+        |   NewForm.js
+        |   Option.js
+        |   Titles.js
+        |   UseForm.js
 ```
 
 ## [Documentation]
