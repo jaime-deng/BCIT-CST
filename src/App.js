@@ -185,7 +185,8 @@ function App() {
 
     let nameRegex = /[a-zA-z]{1,50}/g;
     let studentidRegex = /^A0[0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/g;
-    let emailRegex = /^([a-z1-9]{1,}@my.bcit.ca)|([a-z1-9]{1,}@bcit.ca)$/g;
+    let emailRegex = /^.+@my.bcit.ca|.+@bcit.ca$/;
+    //let emailRegex = /^([a-z1-9]{1,}@my.bcit.ca)|([a-z1-9]{1,}@bcit.ca)$/g;
 
     if (!studentInfo.firstname.match(nameRegex) ||
       !studentInfo.lastname.match(nameRegex) ||
@@ -250,6 +251,7 @@ function App() {
 
     let isValid = validate()
     if (isValid) {
+      
       axios.post('/user/createStudentInfo', {
         firstName: studentInfo.firstname,
         lastName: studentInfo.lastname,
@@ -260,6 +262,7 @@ function App() {
       })
 
         .then((response) => {
+          history.push("/confirmation");
           console.log(response);
         }, (error) => {
           console.log(error);
@@ -274,9 +277,10 @@ function App() {
 
   }
 
-  const onButtonClickForward = () => {
+  const onButtonClickForward = (e) => {
 
-    history.push("/confirmation");
+    handleSubmit(e);
+    //history.push("/confirmation");
 
   }
 
