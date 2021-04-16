@@ -1,3 +1,88 @@
+# BCIT-CST SELECTION client-side
+
+## Table of contents
+
+- [Installation]
+- [Quick-start]
+- [What's-included]
+- [Documentation]
+- [Yarn-installation]
+
+
+## [Installation]
+
+To begin, you can download the repository by clicking the code.
+
+Then you can choose
+
+```
+Download zip
+```
+
+Alternatively, you can clone the repository.
+
+Once you download the project folder, go into terminal and path into the project folder.
+
+Once in the project directory, enter in:
+```
+npm install
+```
+This will install dependencies for the project.
+
+## [Quick-start]
+
+- In terminal, type in npm start
+This will run the project in a localhost environment. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+To setup project for production.
+- In terminal, type in 
+```
+npm build
+```
+This will create a build folder that has a minified version of the project. This folder is ready to be deploy.
+
+## [What's-included]
+
+.
++-- _yarn.lock
++-- _package-lock.json
++-- _package.json
++-- _test.md
++-- _public
+|   +-- index.html
++-- _src
+|   +-- App.css
+|   +-- App.js
+|   +-- App.test.js
+|   +-- BCIT_LOGO.png
+|   +-- Confirm.js
+|   +-- Directory.js
+|   +-- Home.js
+|   +-- index.css
+|   +-- index.js
+|   +-- login.js
+|   +-- logout.js
+|   +-- images
+|   +-- component
+|   |   +-- Banner.js
+|   |   +-- Button.js
+|   |   +-- ConfirmContent.js
+|   |   +-- Content.js
+|   |   +-- Footer.js
+|   |   +-- Form.js
+|   |   +-- Header.js
+|   |   +-- NavBar.js
+|   |   +-- NewForm.js
+|   |   +-- Option.js
+|   |   +-- Titles.js
+|   |   +-- UseForm.js
+
+## [Documentation]
+
+
+
+## [Yarn-installation]
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
