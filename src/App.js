@@ -274,6 +274,12 @@ function App() {
 
   }
 
+  const onButtonClickForward = () => {
+
+    history.push("/confirmation");
+
+  }
+
 
   return (
 
@@ -291,7 +297,10 @@ function App() {
         <NewForm studentInfo={studentInfo} handleInfoChange={handleInfoChange} error={error}
         />
 
-        <Titles text={"Section 2: Option Selection (if you do not select any choice, all will be defered)"} />
+        <Titles text={"Section 2: Option Selection"} />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Acknowledgment*</b>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If you do not select any choice, all will be defered</p>
         <div className="options">
           <Options id={1} state={course} number="First choice" choicesid="one" change={selectChanged} unSelectedCourseList={unSelectedCourseList}
           />
@@ -311,7 +320,7 @@ function App() {
         <hr />
         <div className="Buttons">
           <button onClick={onButtonClick} className="Button1">PREVIOUS</button>
-          <button type="submit" className="Button2">SUBMIT</button>
+          <button onClick={onButtonClickForward} type="submit" className="Button2">SUBMIT</button>
         </div>
       </form>
       <Footer />
