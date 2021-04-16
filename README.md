@@ -43,6 +43,7 @@ This will create a build folder that has a minified version of the project. This
 
 ## [What's-included]
 
+```
 .
 +-- _yarn.lock
 +-- _package-lock.json
@@ -76,6 +77,7 @@ This will create a build folder that has a minified version of the project. This
 |   |   +-- Option.js
 |   |   +-- Titles.js
 |   |   +-- UseForm.js
+```
 
 ## [Documentation]
 
