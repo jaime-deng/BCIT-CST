@@ -67,20 +67,24 @@ const NewForm = ({ studentInfo, handleInfoChange, error }) => {
             </div>
 
             <label htmlFor="set"> SET A,B,C,D,E,F,Co-op,Other:</label>
-            <select
-                name="set"
-                id="set"
-                value={studentInfo.set}
-                onChange={handleInfoChange}>
-                <option value="A" >A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="D">D</option>
-                <option value="E">E</option>
-                <option value="F">F</option>
-                <option value="X">Co-op</option>
-                <option value="Other">Other</option>
-            </select>
+            <div>
+                <select
+                    name="set"
+                    id="set"
+                    value={studentInfo.set}
+                    onChange={handleInfoChange}>
+                    <option value="default" selected>Please Select</option>
+                    <option value="A" >A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                    <option value="X">Co-op</option>
+                    <option value="Other">Other</option>
+                </select>
+                <div className="error">{studentInfo.setError}</div>
+            </div>
         </div>
     )
 }

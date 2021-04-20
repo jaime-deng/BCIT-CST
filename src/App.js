@@ -49,12 +49,13 @@ function App() {
     prefername: '',
     studentid: '',
     email: '',
-    set: 'A',
+    set: 'default',
     firstnameError: '',
     lastnameError: '',
     prefernameError: '',
     studentidError: '',
-    emailError: ''
+    emailError: '',
+    setError:''
   })
 
   const [error, setError] = useState({
@@ -168,7 +169,9 @@ function App() {
   }
 
   function handleInfoChange(event) {
+    
     setStudentInfo({ ...studentInfo, [event.target.id]: event.target.value })
+
   }
 
   // function which validate all the input fields
@@ -181,7 +184,7 @@ function App() {
     let prefernameError = ''
     let studentidError = ''
     let emailError = ''
-
+    let setError = ''
 
     let nameRegex = /[a-zA-z]{1,50}/g;
     let studentidRegex = /^A0[0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/g;
@@ -220,6 +223,12 @@ function App() {
         emailError = ""
       }
 
+      if (studentInfo.set == 'default') {
+        setError = "Please select your set"
+      }else{
+        setError = ""
+      }
+
 
       setStudentInfo({
         ...studentInfo,
@@ -227,7 +236,8 @@ function App() {
         lastnameError: lastnameError,
         prefernameError: prefernameError,
         studentidError: studentidError,
-        emailError: emailError
+        emailError: emailError,
+        setError:setError
       })
 
       return false
@@ -238,7 +248,8 @@ function App() {
         lastnameError: '',
         prefernameError: '',
         studentidError: '',
-        emailError: ''
+        emailError: '',
+        setErrot:''
       })
       return true
     }
