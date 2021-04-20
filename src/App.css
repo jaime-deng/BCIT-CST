@@ -121,6 +121,13 @@ input[type=text]{
 
   width: 28vw;
   margin-bottom: 5px;
+}
+
+input[type=password]{
+  display:flex;
+  flex-direction: column;
+  width: 28vw;
+  margin-bottom: 5px;
 
 }
 input[type=set]{
@@ -150,8 +157,8 @@ select{
   flex-direction: column;
   
   width: 28vw;
-  height: 7vh;
-  margin-bottom: 20px;
+  height: 4vh;
+  margin-bottom: 5px;
 }
 
 div#studid{
@@ -212,7 +219,16 @@ content: "";
   flex-direction: column;
   width: 50%;
   margin: auto;
-  padding: 2rem;
+  padding: 5rem 2rem 20rem;
+}
+
+.login-label{
+  display:flex;
+  width: 15vw;
+  margin-left: 0;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  font-weight: bold;
 }
 
 .login-button{

@@ -19,8 +19,8 @@ export default function Login() {
     })
 
     const [isAuthenticated, setIsAuthenticated] = useState(false)
-    
-    
+
+
     function handleChange(e) {
 
         setLoginDetails({
@@ -28,13 +28,13 @@ export default function Login() {
             [e.target.id]: e.target.value
         })
     }
-    
+
     function handleLogin(e) {
 
         e.preventDefault();
 
         axios.post('/auth/login', loginDetails)
-    
+
             .then((response) => {
                 console.log(response);
                 localStorage.setItem('token', response.data.token);
@@ -48,20 +48,20 @@ export default function Login() {
     // According to the standards, the client should send token to the server via the 
     //HTTP request in a header called Authorization with the form Bearer [JWT_TOKEN].
 
-    function handleClick(){
+    function handleClick() {
         const config = {
-            headers : {
-                Authorization : `Bearer ${localStorage.getItem('token')}`
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }
 
         axios.get('/admin/readDataAsCsv', config)
-        .then(res => {
-            download(res.data, 'studentInfo.csv')
-            console.log(res)
-        }, (error) => {
-            console.log(error)
-        })
+            .then(res => {
+                download(res.data, 'studentInfo.csv')
+                console.log(res)
+            }, (error) => {
+                console.log(error)
+            })
     }
 
     return (
@@ -72,39 +72,39 @@ export default function Login() {
 
             <NavBar />
             {
-                !localStorage.getItem('token') ? 
+                !localStorage.getItem('token') ?
                     <form className="login" onSubmit={handleLogin}>
-                <div>
-                    <label htmlFor="name">Username</label>
-                    <input
-                        type="text"
-                        id="username"
-                        value={loginDetails.username}
-                        name="username"
-                        placeholder="Username"
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="name">Password</label>
-                    <input
-                        type="password"
-                        id="password"
-                        value={loginDetails.password}
-                        placeholder="password"
-                        onChange={handleChange}
-                        required />
-                </div>
-                <button type="submit" className="login-button">Login</button>
-            </form>
-                 : 
+                        <div>
+                            <label className="login-label" htmlFor="name">Username</label>
+                            <input
+                                type="text"
+                                id="username"
+                                value={loginDetails.username}
+                                name="username"
+                                placeholder="Username"
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label className="login-label" htmlFor="name">Password</label>
+                            <input
+                                type="password"
+                                id="password"
+                                value={loginDetails.password}
+                                placeholder="password"
+                                onChange={handleChange}
+                                required />
+                        </div>
+                        <button type="submit" className="login-button">Login</button>
+                    </form>
+                    :
                     <div>
                         <button type="button" onClick={handleClick} className="csv-button">Get CSV</button>
                     </div>
-                
+
             }
-            
+
             <Footer />
         </div>
     );
